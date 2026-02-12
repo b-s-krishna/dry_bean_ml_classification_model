@@ -50,17 +50,23 @@ This project benchmarks six distinct machine learning algorithms:
     - Uses a flowchart-like structure to split the data into branches based on feature values (e.g., Is Area > 50,000?).
 
 **Comparison Table with the evaluation metrics for all the 6 models:**
-- Highlighted the best score in each column
-
-| Model | Accuracy | AUC Score | Precision | Recall | F1 Score | MCC Score |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| XGBoost | 0 | 0 | 0 | 0 | 0 | 0 |
-| Logistic Regression | 0 | 0 | 0 | 0 | 0 | 0 |
-| Random Forest | 0 | 0 | 0 | 0 | 0 | 0 |
-| KNN | 0 | 0 | 0 | 0 | 0 | 0 |
-| Naive Bayes | 0 | 0 | 0 | 0 | 0 | 0 |
-| Decision Tree | 0 | 0 | 0 | 0 | 0 | 0 |
+| Model Name          |   Accuracy |    AUC |   Precision |   Recall |   F1 Score |    MCC |
+|---------------------|------------|--------|-------------|----------|------------|--------|
+| Logistic Regression |     0.9207 | 0.9934 |      0.9214 |   0.9207 |     0.9208 | 0.9041 |
+| Decision Tree       |     0.8898 | 0.9320 |      0.8896 |   0.8898 |     0.8896 | 0.8669 |
+| kNN                 |     0.9152 | 0.9811 |      0.9158 |   0.9152 |     0.9153 | 0.8974 |
+| Naive Bayes         |     0.8979 | 0.9902 |      0.9005 |   0.8979 |     0.8980 | 0.8772 |
+| Random Forest       |     0.9192 | 0.9910 |      0.9194 |   0.9192 |     0.9191 | 0.9023 |
+| XGBoost             |     0.9221 | 0.9937 |      0.9224 |   0.9221 |     0.9221 | 0.9058 |
 
 **Observation of each model on the Dry bean dataset:**
+| Model Name          |   Observation about model performance     |
+|---------------------|-------------------------------------------|
+| Logistic Regression |    |
+| Decision Tree       |    |
+| kNN                 |    |
+| Naive Bayes         |    |
+| Random Forest       |    |
+| XGBoost             |    |
 
 *TODO: add the observations once the implementation is completed*

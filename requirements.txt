@@ -1,17 +1,11 @@
-# Data Manipulation
 pandas
+openpyxl
 numpy
-
-# Visualization
+os
+tabulate
 matplotlib
 seaborn
-
-# Machine Learning
 scikit-learn
 xgboost
-
-# File Handling (Required by pandas.read_excel)
-openpyxl
-
-# README Table Generation (Optional but helpful)
-tabulate
+joblib
+streamlit
