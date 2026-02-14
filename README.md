@@ -62,9 +62,9 @@ This project benchmarks six distinct machine learning algorithms:
 **Observation of each model on the Dry bean dataset:**
 | Model Name          |   Observation about model performance     |
 |---------------------|-------------------------------------------|
-| Logistic Regression |  Linear Struggle: Excellent on large data, but fails when bean features overlap in small samples.  |
+| Logistic Regression |  High performance, indicating many features have strong linear correlations to the target classes.  |
 | Decision Tree       |  Stable: Uses clear physical "if-then" rules. Consistent performance across all data sizes.  |
-| kNN                 |  Neighbor-Dependent: In a tiny test set, it lacks enough "neighbors" to maintain its training accuracy.  |
+| kNN                 |  Performed well on the large training set where data density is high, though sensitive to local noise.  |
 | Naive Bayes         |  Assumption Error: Incorrectly assumes bean features (like Area/Perimeter) are independent.  |
-| Random Forest       |  Reliable: Averages 100+ trees to eliminate errors. Perfectly handled the small test set. |
-| XGBoost             |  Best model: Uses gradient boosting to focus on hard-to-classify beans. Most robust model.  |
+| Random Forest       |  Excellent stability and class separation (high AUC); effectively reduces variance through bagging. |
+| XGBoost             |  Best model: Highest accuracy and MCC. Effectively captures non-linear relationships using gradient boosting.  |
