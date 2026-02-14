@@ -63,8 +63,8 @@ This project benchmarks six distinct machine learning algorithms:
 | Model Name          |   Observation about model performance     |
 |---------------------|-------------------------------------------|
 | Logistic Regression |  High performance, indicating many features have strong linear correlations to the target classes.  |
-| Decision Tree       |  Stable: Uses clear physical "if-then" rules. Consistent performance across all data sizes.  |
+| Decision Tree       |  Most interpretable but lacks the complexity to match ensemble methods, leading to lower overall metrics.  |
 | kNN                 |  Performed well on the large training set where data density is high, though sensitive to local noise.  |
-| Naive Bayes         |  Assumption Error: Incorrectly assumes bean features (like Area/Perimeter) are independent.  |
+| Naive Bayes         |  Impacted by the high correlation between size features (Area, Perimeter), violating the independence assumption.  |
 | Random Forest       |  Excellent stability and class separation (high AUC); effectively reduces variance through bagging. |
 | XGBoost             |  Best model: Highest accuracy and MCC. Effectively captures non-linear relationships using gradient boosting.  |
