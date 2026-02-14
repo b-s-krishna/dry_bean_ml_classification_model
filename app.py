@@ -48,8 +48,19 @@ if 'Class' in test_data.columns:
 
     y_pred = model.predict(X_scaled)
     y_proba = model.predict_proba(X_test_scaled)
-    
-    auc = roc_auc_score(y_test, y_proba, multi_class='ovr', average='weighted')
+
+    # Get present clases in the test data
+    present_classes_index = np.unique(y_test)
+    present_classes = [le.classes_[i] for i in present_classes_index]
+
+    # Get probabilites for present classes only
+    y_proba_present_classes = y_proba[:, present_classes_index]
+    y_proba_present_classes = y_proba_present_classes / y_proba_present_classes.sum(axis=1, keepdims=True)
+
+    if len(present_classes_index) > 1:
+        auc = roc_auc_score(y_test, y_proba_present_classes, multi_class='ovr', average='weighted', labels=present_classes_index)
+    else:
+        auc = 0.0
 
     st.subheader(f"Performance Metrics for Model: {model_name}")
     m1, m2, m3, m4, m5, m6 = st.columns(6)
@@ -65,17 +76,17 @@ if 'Class' in test_data.columns:
 
     with cm_col:
         st.write("Confusion Matrix")
-        cm = confusion_matrix(y_test, y_pred)
+        cm = confusion_matrix(y_test, y_pred, labels=present_classes_index)
         fig, ax = plt.subplots()
         sns.heatmap(cm, annot=True, fmt='d', cmap='Greens', 
-                    xticklabels=le.classes_, yticklabels=le.classes_)
+                    xticklabels=present_classes, yticklabels=present_classes)
         plt.ylabel('Actual')
         plt.xlabel('Predicted')
         st.pyplot(fig)
 
     with cp_col:
         st.write("Classification Report")
-        report = classification_report(y_test, y_pred, target_names=le.classes_, output_dict=True)
+        report = classification_report(y_test, y_pred, labels=present_classes_index, target_names=present_classes, output_dict=True)
         st.table(pd.DataFrame(report).transpose().iloc[:-3, :3])
 else:
     st.error("Uploaded test CSV must have 'Class' column in it for evaluation")
