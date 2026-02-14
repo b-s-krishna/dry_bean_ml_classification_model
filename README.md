@@ -52,21 +52,19 @@ This project benchmarks six distinct machine learning algorithms:
 **Comparison Table with the evaluation metrics for all the 6 models:**
 | Model               |   Accuracy |    AUC |   Precision |   Recall |   F1 Score |    MCC |
 |---------------------|------------|--------|-------------|----------|------------|--------|
-| logistic_regression |     0.9207 | 0.9934 |      0.9214 |   0.9207 |     0.9208 | 0.9041 |
-| decision_tree       |     0.8898 | 0.9320 |      0.8896 |   0.8898 |     0.8896 | 0.8669 |
-| knn                 |     0.9152 | 0.9811 |      0.9158 |   0.9152 |     0.9153 | 0.8974 |
-| naive_bayes         |     0.8979 | 0.9902 |      0.9005 |   0.8979 |     0.8980 | 0.8772 |
-| random_forest       |     0.9192 | 0.9910 |      0.9194 |   0.9192 |     0.9191 | 0.9023 |
-| xgboost             |     0.9280 | 0.9939 |      0.9282 |   0.9280 |     0.9280 | 0.9129 |
+| Logistic Regression |     0.9207 | 0.9934 |      0.9214 |   0.9207 |     0.9208 | 0.9041 |
+| Decision Tree       |     0.8898 | 0.9320 |      0.8896 |   0.8898 |     0.8896 | 0.8669 |
+| kNN                 |     0.9152 | 0.9811 |      0.9158 |   0.9152 |     0.9153 | 0.8974 |
+| Naive Bayes         |     0.8979 | 0.9902 |      0.9005 |   0.8979 |     0.8980 | 0.8772 |
+| Random Forest       |     0.9192 | 0.9910 |      0.9194 |   0.9192 |     0.9191 | 0.9023 |
+| XGBoost             |     0.9280 | 0.9939 |      0.9282 |   0.9280 |     0.9280 | 0.9129 |
 
 **Observation of each model on the Dry bean dataset:**
 | Model Name          |   Observation about model performance     |
 |---------------------|-------------------------------------------|
-| Logistic Regression |    |
-| Decision Tree       |    |
-| kNN                 |    |
-| Naive Bayes         |    |
-| Random Forest       |    |
-| XGBoost             |    |
-
-*TODO: add the observations once the implementation is completed*
+| Logistic Regression |  Linear Struggle: Excellent on large data, but fails when bean features overlap in small samples.  |
+| Decision Tree       |  Stable: Uses clear physical "if-then" rules. Consistent performance across all data sizes.  |
+| kNN                 |  Neighbor-Dependent: In a tiny test set, it lacks enough "neighbors" to maintain its training accuracy.  |
+| Naive Bayes         |  Assumption Error: Incorrectly assumes bean features (like Area/Perimeter) are independent.  |
+| Random Forest       |  Reliable: Averages 100+ trees to eliminate errors. Perfectly handled the small test set. |
+| XGBoost             |  Best model: Uses gradient boosting to focus on hard-to-classify beans. Most robust model.  |
