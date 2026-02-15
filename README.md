@@ -8,11 +8,14 @@ Many bean varieties are visually similar, making manual classification difficult
 
 # Dataset description
 The dataset is composed of features extracted from high-resolution images of dry beans. A computer vision system was used for segmentation and feature extraction, resulting in 16 morphological features for each grain.
+This is a multi-class classification problem where the dry beans have to be classified into one of the 7 classes.
 
 General Information:
-1. Total Instances: 13,611
-2. Total Attributes: 17 (16 numeric features + 1 categorical target)
-3. Classes: 7 (Seker, Barbunya, Bombay, Cali, Dermosan, Horoz, and Sira)
+1. Dataset Name     : Dry Bean
+2. Dataset Source   : UCI
+3. Total Instances  : 13,611
+4. Total Attributes : 17 (16 numeric features + 1 categorical target)
+5. Classes          : 7 (Seker, Barbunya, Bombay, Cali, Dermosan, Horoz, and Sira)
 
 Attribute Breakdown:
 The 17 features consists of 12 dimensions, 4 shape forms and 1 target class, whcih were obtained from the grains:
@@ -36,35 +39,36 @@ The 17 features consists of 12 dimensions, 4 shape forms and 1 target class, whc
 
 # Models Used:
 This project benchmarks six distinct machine learning algorithms:
-1. Logistic Regression (Linear Model):
+1. Logistic Regression:
     - Predicts the probability of a class by fitting data to a logistic (sigmoid) function.
-2. XGBoost (Gradient Boosting):
-    - An advanced ensemble method that builds decision trees sequentially. Each new tree attempts to correct the errors (residuals) made by the previous ones.
-3. Random Forest (Bagging Ensemble):
-    - Constructs a "forest" of multiple decision trees, each trained on a random subset of data. The final prediction is based on the majority vote of all trees.
-4. K-Nearest Neighbors (KNN):
-    - A distance-based algorithm that classifies a bean based on the most common variety among its $k$ closest neighbors in the feature space.
-5. Naive Bayes (Probabilistic):
-    - Based on Bayes' Theorem, it calculates the probability of each class assuming that all input features are independent of each other.
-6. Decision Tree (Non-Linear):
+2. Decision Tree:
     - Uses a flowchart-like structure to split the data into branches based on feature values (e.g., Is Area > 50,000?).
+3. K-Nearest Neighbors:
+    - A distance-based algorithm that classifies a bean based on the most common variety among its ‘k’ closest neighbors in the feature space.
+4. Naive Bayes (Gaussian):
+    - Based on Bayes' Theorem, it calculates the probability of each class assuming that all input features are independent of each other.
+5. Random Forest (Ensemble):
+    - Constructs a "forest" of multiple decision trees, each trained on a random subset of data. The final prediction is based on the majority vote of all trees.
+6. XGBoost (Ensemble):
+    - An advanced ensemble method that builds decision trees sequentially. Each new tree attempts to correct the errors (residuals) made by the previous ones.
+
 
 **Comparison Table with the evaluation metrics for all the 6 models:**
-| Model               |   Accuracy |    AUC |   Precision |   Recall |   F1 Score |    MCC |
-|---------------------|------------|--------|-------------|----------|------------|--------|
-| Logistic Regression |     0.9207 | 0.9934 |      0.9214 |   0.9207 |     0.9208 | 0.9041 |
-| Decision Tree       |     0.8898 | 0.9320 |      0.8896 |   0.8898 |     0.8896 | 0.8669 |
-| kNN                 |     0.9152 | 0.9811 |      0.9158 |   0.9152 |     0.9153 | 0.8974 |
-| Naive Bayes         |     0.8979 | 0.9902 |      0.9005 |   0.8979 |     0.8980 | 0.8772 |
-| Random Forest       |     0.9192 | 0.9910 |      0.9194 |   0.9192 |     0.9191 | 0.9023 |
-| XGBoost             |     0.9280 | 0.9939 |      0.9282 |   0.9280 |     0.9280 | 0.9129 |
+| Model                    |   Accuracy |    AUC |   Precision |   Recall |   F1 Score |    MCC |
+|--------------------------|------------|--------|-------------|----------|------------|--------|
+| Logistic Regression      |     0.9207 | 0.9934 |      0.9214 |   0.9207 |     0.9208 | 0.9041 |
+| Decision Tree            |     0.8898 | 0.9320 |      0.8896 |   0.8898 |     0.8896 | 0.8669 |
+| kNN                      |     0.9152 | 0.9811 |      0.9158 |   0.9152 |     0.9153 | 0.8974 |
+| Naive Bayes (Gaussian)   |     0.8979 | 0.9902 |      0.9005 |   0.8979 |     0.8980 | 0.8772 |
+| Random Forest (Ensemble) |     0.9192 | 0.9910 |      0.9194 |   0.9192 |     0.9191 | 0.9023 |
+| XGBoost  (Ensemble)      |     0.9280 | 0.9939 |      0.9282 |   0.9280 |     0.9280 | 0.9129 |
 
 **Observation of each model on the Dry bean dataset:**
-| Model Name          |   Observation about model performance     |
-|---------------------|-------------------------------------------|
-| Logistic Regression |  High performance, indicating many features have strong linear correlations to the target classes.  |
-| Decision Tree       |  Most interpretable but lacks the complexity to match ensemble methods, leading to lower overall metrics.  |
-| kNN                 |  Performed well on the large training set where data density is high, though sensitive to local noise.  |
-| Naive Bayes         |  Impacted by the high correlation between size features (Area, Perimeter), violating the independence assumption.  |
-| Random Forest       |  Excellent stability and class separation (high AUC); effectively reduces variance through bagging. |
-| XGBoost             |  Best model: Highest accuracy and MCC. Effectively captures non-linear relationships using gradient boosting.  |
+| Model Name               |   Observation about model performance     |
+|--------------------------|-------------------------------------------|
+| Logistic Regression      |  High performance, indicating many features have strong linear correlations to the target classes.                |
+| Decision Tree            |  Most interpretable but lacks the complexity to match ensemble methods, leading to lower overall metrics.         |
+| kNN                      |  Performed well on the large training set where data density is high, though sensitive to local noise.            |
+| Naive Bayes (Gaussian)   |  Impacted by the high correlation between size features (Area, Perimeter), violating the independence assumption. |
+| Random Forest (Ensemble) |  Excellent stability and class separation (high AUC); effectively reduces variance through bagging.               |
+| XGBoost  (Ensemble)      |  Best model: Highest accuracy and MCC. Effectively captures non-linear relationships using gradient boosting.     |
